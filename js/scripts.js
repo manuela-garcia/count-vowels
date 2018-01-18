@@ -1,18 +1,30 @@
-$(document).ready(function(){
-  $("form#leap-year").submit(function(event) {
+
+
+
+
+
+
+$(document).ready(function() {
+  $("#userString").submit(function(event) {
     event.preventDefault();
-    var year = parseInt($("input#year").val());
-    var result = leapYear(year);
-    $("#result").text(result);
+    var userInput = $("#string").val().split(""); // string.split() turns a string into an array
+    console.log(userInput);
+    var vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    var numVowels = 0;
+  //every letter in string --> for each --> is it a vowel?
+
+    userInput.forEach(function(character) {
+      vowels.forEach(function(vowel) {
+        if (character === vowel) {
+          numVowels ++;
+        // } else {
+        //   //do nothing
+        };
+      });
+    });
+
+    $("#showResult").text("There are " + numVowels + " of vowels in your input.");
+
+
   });
-
-  var leapYear = function(year) {
-    if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-
 });
